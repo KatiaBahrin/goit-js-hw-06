@@ -13,17 +13,18 @@ const images = [
   },
 ];
 
-const galleryList = document.querySelector(".gallery");
+const imagesList = document.querySelector('.gallery');
 
+function createMarkup(array) {
+  const result = array.map((image) => {
+    return `<li><img src="${image.url}" alt="${image.alt}" class="list-img"/><li/>`
+  });
+  
+  return result.join("");
+}
 
-images.forEach((image) => {
-  const listItem = document.createElement("li");
-  listItem.classList.add("gallery-item");
+const markup = createMarkup(images);
 
-  const img = document.createElement("img");
-  img.src = image.url;
-  img.alt = image.alt;
+console.log(markup);
 
-  listItem.appendChild(img);
-  galleryList.insertAdjacentElement("beforeend", listItem);
-});
+imagesList.insertAdjacentHTML("beforeend", markup)

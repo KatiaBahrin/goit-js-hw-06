@@ -7,15 +7,14 @@ const ingredients = [
   'Condiments',
 ];
 
-const ingredientsList = document.getElementById('ingredients');
+const ingredientsList = document.querySelector('#ingredients');
 
-const fragment = document.createDocumentFragment(); // Фрагмент для оптимізації додавання елементів
-
-ingredients.forEach((ingredient) => {
-  const listItem = document.createElement('li'); // Новий <li> елемент
-  listItem.textContent = ingredient; // Текстовий вміст з масиву
-  listItem.classList.add('item'); // Додаємо клас "item" до <li>
-  fragment.appendChild(listItem); // Додаємо <li> до фрагмента
+const liArray = ingredients.map(ingredient => {
+  const listElement = document.createElement("li");
+  listElement.textContent = ingredient;
+  listElement.classList.add('item')
+  return listElement;
+  
 });
 
-ingredientsList.appendChild(fragment);І
+ingredientsList.append(...liArray);
